@@ -5,6 +5,11 @@ import cartActions from '../store/actions/cart';
 const Cart = () => {
     const cart = useSelector(state => state.cart)
     const dispatch = useDispatch();
+    const clearStorage = ()=> {
+        dispatch(cartActions.DeleteAll(cart))
+        localStorage.removeItem('dioshopping: cart')
+    }
+
 
     let totalPrice = 0;
 
@@ -73,6 +78,10 @@ const Cart = () => {
                         </tbody>
                         </table>
                         </div>
+
+                    <div>
+                        <p style={{color: 'red', cursor: 'pointer', textAlign: 'center'}} onClick={clearStorage}>Esvaziar Carrinho</p>
+                    </div>
 
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>

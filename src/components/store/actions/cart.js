@@ -30,6 +30,13 @@ const DeleteItem = (cart, product) => {
     }
 }
 
+const DeleteAll = (cart) => {
+    return{
+        type:'DELETE_ALL',
+        cart
+    }
+}
+
 const ChangeCart = (localCart) => {
     return{
         type: 'CHANGE_CART',
@@ -42,5 +49,6 @@ export default {
     AddItem,
     RemoveItem,
     DeleteItem,
+    DeleteAll,
     ChangeCart
 }
