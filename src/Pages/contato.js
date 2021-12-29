@@ -19,7 +19,10 @@ const Contatos = () => {
 
     const sendMessage = () => {
         setValidator(false);        //fazer validação email 
-        if(author.length <= 0 || content.length <= 0){
+        
+        const authorRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.([a-z]+))?$/i
+        
+        if(author.length <= 0 || content.length <= 0 || !authorRegex.test(author)){
             return setValidator(!validator)
         }
         const bodyForm = {
@@ -54,8 +57,8 @@ const Contatos = () => {
     return(
         <>
             <Grid container direction="row" xs={12}>
-                <TextField id="name" label="Nome" value={author} onChange={(event)=>{setAuthor(event.target.value)}} fullWidth/>
-                <TextField id="message" label="Mensagem" value={content} onChange={(event)=>{setContent(event.target.value)}} fullWidth/>
+                <TextField id="name" label="Email" variant="filled" value={author} onChange={(event)=>{setAuthor(event.target.value)}} fullWidth/>
+                <TextField id="message" label="Mensagem" variant="filled" value={content} onChange={(event)=>{setContent(event.target.value)}} fullWidth/>
             </Grid>
 
             {validator && 
